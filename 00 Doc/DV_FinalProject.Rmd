@@ -73,3 +73,44 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 ###For further information on TDE, check 
 <a href="http://www.tableau.com/about/blog/2014/7/understanding-tableau-data-extracts-part1/">Tableau Understanding Data Extracts</a>
 
+#Exploring Tableau Data Visualizations!
+##Non-Aggregated Measures Analysis (start with a green thing) - also demonstrates Boxplots, Dates, and Pages
+##Boxplot Story (start with a green thing)
+###1. Open UK Car Consumption and Emissions. tde
+
+###2. Uncheck Aggregate Measures under the Analysis tab and Rename the Current Sheet to Co2 Emissions Boxplot.
+
+###3. Click on Co2 Under Measures and then click on the boxplot icon on "Show Me” i.e., the right icon on row 7.
+
+###4. Drag Fuel Type onto Columns.
+
+###5. Drag Manufacturer onto the Color Shelf.
+
+###6. Drag Manufacturer onto the Filters Shelf and from this Pill's menu, select Show Quick Filter.
+
+###7. Drag Engine onto Detail
+![](Boxplot1.png)
+
+###8. Drag Manufacturer onto Pages
+
+###9. Filtered out the top 20 luxury cars
+
+###10. Click through the luxury car brands on Pages 
+###Ok brands
+![](Merc.png)
+![](Audi.png)
+![](BMW.png)
+![](Jag.png)
+![](Cad.png)
+![](Lex.png)
+![](Por.png)
+![](Land.png)
+###The main fuel type used by this group of cars with price rage 30,000 - 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and all except Land Rover has mean emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
+
+###Real luxury brads
+![](Mas.png)
+![](Lam.png)
+![](Rolls.png)
+![](Fer.png)
+![](Ast.png)
+###Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls-Royce, Ferrari, and Aston Martin Lagonda can only use one fuel type Petrol. 
