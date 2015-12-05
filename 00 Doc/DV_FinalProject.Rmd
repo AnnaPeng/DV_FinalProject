@@ -143,6 +143,17 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 ##Clearly the Average noise made by all these years from 2000 to 2013 have surpassed the standards of human comfort.
 ![](Refline.png)
 
+##CNT of Cost of Fuel 6000 Miles with SUM of Engine Capacity on a Dual-axis
+##1. Drag the Measure Fuel Cost 6000 miles to "Drop to the field" and click Histogram on "Show Me"
+
+##2. Drag Engine Capacity to right axis to create a dual axis plot
+
+##3. Go to Makr, click on CNT(Fuel Cost 6000 Miles) and change Automatic to Bar, and then click on SUM(Engine Capacity) and change Automatic to Line	
+![](dual.png)
+##4. Drag Year to Pages Shelf and step through each year from 2000 to 2004.
+<video controls="controls" width="800" height="600" name="Dual Axis through Years" src="PagesoverYear.mov"></video>
+
+
 
 
 
