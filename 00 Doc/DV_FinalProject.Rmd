@@ -122,8 +122,8 @@ If we plot out the boxplot of luxury cars' Co2 emissions and Noise level, we see
 
 Why high emissions and high noise level for luxury cars? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
 
-##<span style="color:red">Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Histograms, Dual-axis Plots and Show Me
-##Histogram Story (start with a green thing)
+##<span style="color:red">Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Histograms, Reference Lines, Sets, Dual-axis Plots and Show Me
+##Histogram Story (start with a green thing) + Reference Lines + Sets
 ##1. Open UK Car Consumption and Emission Extract.tde
 
 ##2. Rename Sheet 1 to Noise Level Histogram
@@ -145,6 +145,9 @@ Upper 70s (dB (A)) are annoyingly loud to some people. So next I compare the Ave
 ##8. Go to Analytics and click Reference Line, choose Line Only. Click on Value and choose create parameter. Created a parameter called "Annoyingly Loud", and click OK. And then go to Analytics and click Average Line.
 ![](Refline.png)
 Clearly the Average noise made by all these years from 2000 to 2013 have surpassed the standards of human comfort.
+
+##9.Select the four highest Sales Categories and hover over one of them. Click on the Set icon and select Create Set. Name the Set “Four Highest Noise Levels”
+![](f.png)
 
 ##More Histogram Story
 ##CNT of Cost of Fuel 6000 Miles with SUM of Engine Capacity on a Dual-axis
@@ -171,6 +174,37 @@ Step through each year from 2000 to 2004
 ##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
 ![](s.png)
 Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
+
+##<span style="color:red">Crosstabs</span> (start with two blue things and a green thing) - also demonstrates Key Performance Indicators (KPIs), Calculated Fields, Sets, Parameters, and Hierarchies
+##Crosstabs + KPI Story + Sets (start with two blue things and a green thing)
+
+##1. Open UK Car Consumption and Emissions Extract.tde
+##2. Rename Sheet 1 to Crosstab + KPI
+##3. Drag Fuel Type to the Columns Shelf
+##4. Drag Manufacturer to the Rows Shelf
+##5. Drag Co2 to Text on the Marks Card
+##6. View the data by clicking on the View Data icon on the Dimensions Tab, notice there is no column named “KPI – Fuel Consump Ratio”
+##7. On the Dimensions Tab, click on the menu icon and select Create Calculated Field
+##8. Name the Calculated Field “KPI - Fuel Consummp Ratio”
+##9. Enter Sum([Urban Imperial])/Sum([Co2]) as the calculation. Notice that Urban Imperial means fuel comsumption in urban conditions in miles per gallon (mpg). So the higher ratio the entry has, the more environmental-friendly and more fuel efficient the combo is
+##10. On the Dimensions Tab, click the View Data icon and see that a new field named “KPI - Fuel Consump Ratio” was added to the data.
+##11. View the data again, now notice there is a column named “KPI – Fuel Consump Ratio”
+##12. Drag KPI - Fuel Consump Ratio onto Color
+##13. Change the Color Palette to Red-White-Green Diverge. The greener the better. Also adjust to Entire View to see the entire crosstab
+![](KPI.png)
+Clearly all cars that use Diesel Electric Engine are green and therefore more environmental-freindly. However, there is no certain manufacturer whose cars are environmental-friendly over all Fuel Types. So my suggestion is that no matter what car you get, try using Diesel Electricity.
+##14. Create a Four Highest Co2 Set, and drag it to Filters. Set this Filter to All.
+![](set.png)
+![](sf.png)
+The numbers show that these four brands are pretty popular in UK so they have the highest sum of Co2 emissions; the color tells us that Mercedes-Benz and Volkswagen are more environmentally friedly (VW really?). 
+
+##<span style="color:red">Barcharts</span> (start with a blue thing and a green thing) - also demonstrate Table Calculations
+
+##Barcharts Story (start with a blue thing and a green thing) + Table Calculations
+
+
+
+
 
 
 
