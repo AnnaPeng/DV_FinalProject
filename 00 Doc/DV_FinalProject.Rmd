@@ -106,7 +106,7 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 ![](Lex.png)
 ![](Por.png)
 ![](Land.png)
-###The main fuel type used by this group of cars with price rage 30,000 - 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and all except Land Rover has mean emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
+The main fuel type used by this group of cars with price rage 30,000 - 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and all except Land Rover has mean emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
 
 ###Real luxury brads
 ![](Mas.png) 
@@ -115,10 +115,12 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 ![](Rolls.png)
 ![](Fer.png)
 ![](Ast.png)
-###Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls-Royce, Ferrari, and Aston Martin Lagonda can only use one fuel type Petrol. Highest mean Co2 emission -- Lamborghini up to 600 (g/km). 
-###If we plot out the boxplot of luxury cars' Co2 emissions and Noise level, we see that the avaerage of Co2 emissions is around 211 g/km, and average of Noise level is up to 71 measured on the A scale of a noise meter (dB (A)).
+Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls-Royce, Ferrari, and Aston Martin Lagonda can only use one fuel type Petrol. Highest mean Co2 emission -- Lamborghini up to 600 (g/km). 
+
 ![](Noi.png)
-###Why high emissions and high noise level for luxury cars? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
+If we plot out the boxplot of luxury cars' Co2 emissions and Noise level, we see that the avaerage of Co2 emissions is around 211 g/km, and average of Noise level is up to 71 measured on the A scale of a noise meter (dB (A)).
+
+Why high emissions and high noise level for luxury cars? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
 
 ##<span style="color:red">Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Histograms, Dual-axis Plots and Show Me
 ##Histogram Story (start with a green thing)
@@ -138,11 +140,13 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 
 ##7. Adjust filter to find the Engine that gives lowest average of noise
 ![](Low.png)
-##Upper 70s (dB (A)) are annoyingly loud to some people. So next I compare the Average of the all the Noise made by these engines to the threshold 70s (dB (A)).
-##8. Go to Analytics and click Reference Line, choose Line Only. Click on Value and choose create parameter. Created a parameter called "Annoyingly Loud", and click OK. And then go to Analytics and click Average Line.
-##Clearly the Average noise made by all these years from 2000 to 2013 have surpassed the standards of human comfort.
-![](Refline.png)
+Upper 70s (dB (A)) are annoyingly loud to some people. So next I compare the Average of the all the Noise made by these engines to the threshold 70s (dB (A)).
 
+##8. Go to Analytics and click Reference Line, choose Line Only. Click on Value and choose create parameter. Created a parameter called "Annoyingly Loud", and click OK. And then go to Analytics and click Average Line.
+![](Refline.png)
+Clearly the Average noise made by all these years from 2000 to 2013 have surpassed the standards of human comfort.
+
+##More Histogram Story
 ##CNT of Cost of Fuel 6000 Miles with SUM of Engine Capacity on a Dual-axis
 ##1. Drag the Measure Fuel Cost 6000 miles to "Drop to the field" and click Histogram on "Show Me"
 
@@ -152,6 +156,25 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 ![](dual.png)
 ##4. Drag Year to Pages Shelf and step through each year from 2000 to 2004.
 <video controls="controls" width="800" height="600" name="Dual Axis through Years" src="PagesoverYear.mov"></video>
+It tells that over the four years the mean fuel cost to run 6000 miles in Pounds doesn not change, is always 540.5 Pounds; what changes is that over time, more and more people's cars have run 6000 miles and thus the counts for each variable in the bin is increasing. It reflects car has been becoming a popular travel tool. The yellow line also shows that the larger the engine capacity the higher fuel cost.
+
+##The above can also be shown in Packed Bubble
+![](Packed.png)
+Step through each year from 2000 to 2004
+<video controls="controls" width="800" height="600" name="Dual Axis through Years" src="Packedbubble.mov"></video>
+
+##<span style="color:red">Scatter Plots</span> (start with 2 green things) -also demonstrates Maps, Ac9ons, Dashboards, and the Analy9cs Tab - Models and Forecas9ng
+
+##Scatterplot Story
+##1. Drag Urban Imperial to Column and Co2 to Row, and drag
+
+##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
+![](s.png)
+Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
+
+
+
+
 
 
 
