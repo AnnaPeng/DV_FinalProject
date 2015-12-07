@@ -1,74 +1,66 @@
+Final Project -- Exploring Automobile Fuel Efficiency & Environmental-Friendliness
 ---
-title: "DV_FinalProject -- UK Car Fuel Consumption and Emissions"
-author: "Panyu Peng; Bryan Ho"
-date: "December 4, 2015"
-output: html_document
+data: UK Car Fuel Consumption and Emissions 
+author: "Panyu Peng; Bryan Ho" 
+date: "December 4, 2015"  
+output: html_document 
 ---
+Today, we are exploring myriad elements of automobiles including Fuel Type, Transmission Type, Engine, Manufacturer etc. so that we have an idea of the optimal combination of these elements that makes the most fuel efficient and environmental-friendly transportation tool. 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+*<span style="color:red">Non-Aggregated Measures Analysis</span>
+*<span style="color:red">Aggregated Measures Analysis</span>
+*<span style="color:red">Scatter Plots</span>
+*<span style="color:red">Crosstabs</span>
+*<span style="color:red">Barcharts</span>
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-#First of all, We are going to source these packages below
-```{r}
-require("jsonlite")
-require("RCurl")
-require("dplyr")
-require("ggplot2")
-require("knitr")
-require("dplyr")
-require("extrafont")
-```
-
-#Next, we modified the R_ETL.R file and use it to create a table on SQL server. The modified versions are as follows:
-##The tabel we get is as follows:  
-###UK Car Fuel Consumption and Emissions's R_ETL.R file:  
+#Create a Table and upload data to Oracle Server. The modified versions are as follows:
+ 
+###UK Car Fuel Consumption and Emissions's R_ETL.R file and Table:  
 ![](CSV.png)  
 CREATE TABLE carconsump (
 -- Change table_name to the table name you want.
- year varchar2(4000),
- manufacturer varchar2(4000),
- model varchar2(4000),
- engine varchar2(4000),
- transmission varchar2(4000),
- transmission_type varchar2(4000),
- fuel_type varchar2(4000),
- X varchar2(4000),
- X_1 varchar2(4000),
- X_2 varchar2(4000),
- X_3 varchar2(4000),
- X_4 varchar2(4000),
- X_5 varchar2(4000),
- X_6 varchar2(4000),
- X_7 varchar2(4000),
- X_8 varchar2(4000),
- X_9 varchar2(4000),
- euro_standard number(38,4),
- engine_capacity number(38,4),
- urban_metric number(38,4),
- extra_urban_metric number(38,4),
- combined_metric number(38,4),
- urban_imperial number(38,4),
- extra_urban_imperial number(38,4),
- combined_imperial number(38,4),
- noise_level number(38,4),
- co2 number(38,4),
- co_emissions number(38,4),
- fuel_cost_6000_miles number(38,4)
- );
- 
-#Understanding Tableau Data Extract
-##A Tableau data extract is a compressed snapshot of data stored on disk and loaded into memory as required to render a Tableau viz.There are two aspects of TDE design that make them ideal for supporting analytics and data discovery. 
-##The first is that a TDE is a columnar store. Columnar databases store column values together rather than row values, and as a result, they dramatically reduce the input/output required to access and aggregate the values in a column. 
-![](Col_Row.png)
-##The second key aspect of TDE design is how they are structured which impacts how they are loaded into memory and used by Tableau.TDEs use all parts of your computer’s memory, from RAM to hard disk, and put each part to work as best fits its characteristics. To better understand, I tried to use connect to our data UK Car Fuel Consumptions and Emissions with an Extract API script in python, where I explored and walked through how a TDE is created from a CSV and then later used in our project as the data source for one or more visualizations.
-![](PythonCSV2TDE.png)
-##When Tableau creates a data extract, it first defines the structure for the TDE and creates separate files for each column in the underlying source.To complete the creation of a TDE, individual column files are combined with metadata to form a memory-mapped file. Because a TDE is a memory-mapped file, when Tableau requests data from a TDE, the data is loaded directly into memory by the operating system. Tableau doesn’t have to open, process or decompress the TDE to start using it. If necessary, the operating system continues to move data in and out of RAM to insure that all of the requested data is made available to Tableau. This is a key point - it means that Tableau can query data that is bigger than the available RAM on a machine!
+year varchar2(4000),
+manufacturer varchar2(4000),
+model varchar2(4000),
+engine varchar2(4000),
+transmission varchar2(4000),
+transmission_type varchar2(4000),
+fuel_type varchar2(4000),
+X varchar2(4000),
+X_1 varchar2(4000),
+X_2 varchar2(4000),
+X_3 varchar2(4000),
+X_4 varchar2(4000),
+X_5 varchar2(4000),
+X_6 varchar2(4000),
+X_7 varchar2(4000),
+X_8 varchar2(4000),
+X_9 varchar2(4000),
+euro_standard number(38,4),
+engine_capacity number(38,4),
+urban_metric number(38,4),
+extra_urban_metric number(38,4),
+combined_metric number(38,4),
+urban_imperial number(38,4),
+extra_urban_imperial number(38,4),
+combined_imperial number(38,4),
+noise_level number(38,4),
+co2 number(38,4),
+co_emissions number(38,4),
+fuel_cost_6000_miles number(38,4)
+);
 
+ 
 #Experiment Tableau Data Extract
 I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.csv of total of 10,000 rows and save it as a .tde called carconsump.reformatted_5000Rows.tde. So I created a TDE from a CSV. Follows are the procedures to create a TDE:
 ![](ExperimentExtractData.png)
 ![](ExpExtractData_5000.png)
+##A Tableau data extract is a compressed snapshot of data stored on disk and loaded into memory as required to render a Tableau viz.There are two aspects of TDE design that make them ideal for supporting analytics and data discovery. 
+##The first is that a TDE is a columnar store. Columnar databases store column values together rather than row values, and as a result, they dramatically reduce the input/output required to access and aggregate the values in a column. 
+![](Col_Row.png)
+##The second key aspect of TDE design is how they are structured which impacts how they are loaded into memory and used by Tableau.TDEs use all parts of your computer’s memory, from RAM to hard disk, and put each part to work as best fits its characteristics. To better understand, I tried to connect to our data UK Car Fuel Consumptions and Emissions with an Extract API script in python, where I explored and walked through how a TDE is created from a CSV and then later used in our project as the data source for one or more visualizations.
+![](PythonCSV2TDE.png)
+##When Tableau creates a data extract, it first defines the structure for the TDE and creates separate files for each column in the underlying source.To complete the creation of a TDE, individual column files are combined with metadata to form a memory-mapped file. Because a TDE is a memory-mapped file, when Tableau requests data from a TDE, the data is loaded directly into memory by the operating system. Tableau doesn’t have to open, process or decompress the TDE to start using it. If necessary, the operating system continues to move data in and out of RAM to insure that all of the requested data is made available to Tableau. This is a key point - it means that Tableau can query data that is bigger than the available RAM on a machine!
 
 ###For further information on TDE, check 
 <a href="http://www.tableau.com/about/blog/2014/7/understanding-tableau-data-extracts-part1/">Tableau Understanding Data Extracts</a>
@@ -202,10 +194,17 @@ The numbers show that these four brands are pretty popular in UK so they have th
 
 ##Barcharts Story (start with a blue thing and a green thing) + Table Calculations
 
+##1. Drag Year and Transmission Type to Rows, and Noise Level to Columns
 
+##2. Exclude Null and N/A in the last year; Change SUM of Noise to AVE, and add an Average Reference Line
 
+##3. Drag Co2 to Columns, and change SUM to AVE, and add a Average Reference Line
 
+##4. Drag Combined Imperial to Column, and change SUM to AVE, and add Average Reference Line. 
 
+##5. Add a KPI -- MPG/Co2g/kg. The higher the ratio, the more efficient and environmental-friendly
+![](b.png)
+Manual Transmission cars tend to be more fuel efficient and environmental-freindly 
 
 
 
