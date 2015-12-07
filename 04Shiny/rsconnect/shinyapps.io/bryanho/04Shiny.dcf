@@ -1,0 +1,8 @@
+name: 04Shiny
+account: bryanho
+server: shinyapps.io
+bundleId: 325874
+url: https://bryanho.shinyapps.io/04Shiny
+when: 1449470242.89359
+asMultiple: FALSE
+asStatic: FALSE
