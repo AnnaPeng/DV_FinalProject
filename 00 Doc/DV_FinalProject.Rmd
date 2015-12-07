@@ -143,7 +143,7 @@ https://bryanho.shinyapps.io/04Shiny
 ##<span style="color:red">Scatter Plots</span> (start with 2 green things) -also demonstrates the Trend Line - Models and Forecasting
 
 ##Scatterplot Story
-##1. Drag Urban Imperial to Column and Co2 to Row, and drag
+##1. Drag Urban Imperial to Column and Co2 to Row
 
 ##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
 ![](s.png)

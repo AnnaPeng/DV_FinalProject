@@ -66,6 +66,7 @@ fuel_cost_6000_miles number(38,4)
 
 ##The second key aspect of TDE design is how they are structured which impacts how they are loaded into memory and used by Tableau.TDEs use all parts of your computer’s memory, from RAM to hard disk, and put each part to work as best fits its characteristics. To better understand, I tried to connect to our data UK Car Fuel Consumptions and Emissions with an Extract API script in python, where I explored and walked through how a TDE is created from a CSV and then later used in our project as the data source for one or more visualizations.
 ![](PythonCSV2TDE.png)
+
 ##When Tableau creates a data extract, it first defines the structure for the TDE and creates separate files for each column in the underlying source.To complete the creation of a TDE, individual column files are combined with metadata to form a memory-mapped file. Because a TDE is a memory-mapped file, when Tableau requests data from a TDE, the data is loaded directly into memory by the operating system. Tableau doesn’t have to open, process or decompress the TDE to start using it. If necessary, the operating system continues to move data in and out of RAM to insure that all of the requested data is made available to Tableau. This is a key point - it means that Tableau can query data that is bigger than the available RAM on a machine!
 
 ###For further information on TDE, check 
@@ -96,7 +97,7 @@ fuel_cost_6000_miles number(38,4)
 
 ###10. Click through the luxury car brands on Pages 
 ###Entry-Level Luxury Cars
-The main fuel type used by this group of cars with price rage $ 30,000 - $ 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and other except Land Rover has mean carbon emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
+##The main fuel type used by this group of cars with price rage $ 30,000 - $ 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and other except Land Rover has mean carbon emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
 ![](Merc.png)
 ![](Audi.png)
 ![](BMW.png)
@@ -118,7 +119,7 @@ Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls
 If we plot out the boxplot of luxury cars' Co2 emissions and Noise level, we see that the avaerage of Co2 emissions is around 211 g/km, and average of Noise level is up to 71 measured on the A scale of a noise meter (dB (A)).
 ![](Noi.png)
 
-Why luxury cars have high emissions and high noise level? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
+###Conlusion: Why luxury cars have high emissions and high noise level? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
 
 ##<span style="color:red">Scatterplot on Shiny App </span>  
 ##First thing to do
@@ -143,14 +144,14 @@ https://bryanho.shinyapps.io/04Shiny
 ##<span style="color:red">Scatter Plots</span> (start with 2 green things) -also demonstrates the Trend Line - Models and Forecasting
 
 ##Scatterplot Story
-##1. Drag Urban Imperial to Column and Co2 to Row, and drag
+##1. Drag Urban Imperial to Column and Co2 to Row
 
 ##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
 ![](s.png)
 ##3. Describe Trend Model
 ![](d.png)
 ![](des.png)
-Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
+###Conclusion: Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
 
 ##<span style="color:red">Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Histograms, Reference Lines, Sets, Dual-axis Plots and Show Me
 ##Histogram Story (start with a green thing) + Reference Lines + Sets
@@ -187,9 +188,11 @@ Clearly the Average noise made by all these years from 2000 to 2013 have surpass
 
 ##3. Go to Makr, click on CNT(Fuel Cost 6000 Miles) and change Automatic to Bar, and then click on SUM(Engine Capacity) and change Automatic to Line	
 ![](dual.png)
+
 ##4. Drag Year to Pages Shelf and step through each year from 2000 to 2004.
 <video controls="controls" width="800" height="600" name="Dual Axis through Years" src="PagesoverYear.mov"></video>
-It tells that over the four years the mean fuel cost to run 6000 miles in Pounds doesn not change, is always 540.5 Pounds; what changes is that over time, more and more people's cars have run 6000 miles and thus the counts for each variable in the bin is increasing. It reflects car has been becoming a popular travel tool. The yellow line also shows that the larger the engine capacity the higher fuel cost.
+
+###Conclusion: It tells that over the four years the mean fuel cost to run 6000 miles in Pounds doesn not change, is always 540.5 Pounds; what changes is that over time, more and more people's cars have run 6000 miles and thus the counts for each variable in the bin is increasing. It reflects car has been becoming a popular travel tool. The yellow line also shows that the larger the engine capacity the higher fuel cost.
 
 ##The above can also be shown in Packed Bubble
 ![](Packed.png)
@@ -241,12 +244,11 @@ Clearly all cars that use Diesel Electric Engine are green and therefore more en
 ##14. Create a Four Highest Co2 Set, and drag it to Filters. Set this Filter to All.
 ![](set.png)
 ![](sf.png)
-The numbers show that these four brands are pretty popular in UK so they have the highest sum of Co2 emissions; the color tells us that Mercedes-Benz and Volkswagen are more environmentally friedly (VW really?).
+###Conclusion: The numbers show that these four brands are pretty popular in UK so they have the highest sum of Co2 emissions; the color tells us that Mercedes-Benz and Volkswagen are more environmentally friedly (VW really?).
 http://www.dw.com/en/vw-98000-petrol-cars-affected-by-co2-emissions-cheating-scam/a-18825262
 
-##<span style="color:red">Barcharts</span> (start with a blue thing and a green thing) - also demonstrate Table Calculations
-
-##Barcharts Story (start with a blue thing and a green thing) + Table Calculations
+##<span style="color:red">Barcharts</span> (start with a blue thing and a green thing) 
+##Barcharts Story (start with a blue thing and a green thing) 
 
 ##1. Drag Year and Transmission Type to Rows, and Noise Level to Columns
 
@@ -258,7 +260,7 @@ http://www.dw.com/en/vw-98000-petrol-cars-affected-by-co2-emissions-cheating-sca
 
 ##5. Add a KPI -- MPG/Co2g/kg. The higher the ratio, the more efficient and environmental-friendly
 ![](b.png)
-Manual Transmission cars tend to be more fuel efficient and environmental-freindly 
+###Conclusion: Manual Transmission cars tend to be more fuel efficient and environmental-freindly 
 
 
 
