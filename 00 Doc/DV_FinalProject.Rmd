@@ -74,7 +74,8 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 <a href="http://www.tableau.com/about/blog/2014/7/understanding-tableau-data-extracts-part1/">Tableau Understanding Data Extracts</a>
 
 #Exploring Tableau Data Visualizations!
-##Non-Aggregated Measures Analysis (start with a green thing) - also demonstrates Boxplots, Dates, and Pages
+
+##<span style="color:red">Non-Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Boxplots, Dates, and Pages
 ##Boxplot Story (start with a green thing)
 ###1. Open UK Car Consumption and Emissions. tde
 
@@ -105,12 +106,111 @@ I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.
 ![](Lex.png)
 ![](Por.png)
 ![](Land.png)
-###The main fuel type used by this group of cars with price rage 30,000 - 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and all except Land Rover has mean emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
+The main fuel type used by this group of cars with price rage 30,000 - 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and all except Land Rover has mean emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
 
 ###Real luxury brads
-![](Mas.png)
+![](Mas.png) 
+![](Lam.png)
 ![](Lam.png)
 ![](Rolls.png)
 ![](Fer.png)
 ![](Ast.png)
-###Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls-Royce, Ferrari, and Aston Martin Lagonda can only use one fuel type Petrol. 
+Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls-Royce, Ferrari, and Aston Martin Lagonda can only use one fuel type Petrol. Highest mean Co2 emission -- Lamborghini up to 600 (g/km). 
+
+![](Noi.png)
+If we plot out the boxplot of luxury cars' Co2 emissions and Noise level, we see that the avaerage of Co2 emissions is around 211 g/km, and average of Noise level is up to 71 measured on the A scale of a noise meter (dB (A)).
+
+Why high emissions and high noise level for luxury cars? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
+
+##<span style="color:red">Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Histograms, Reference Lines, Sets, Dual-axis Plots and Show Me
+##Histogram Story (start with a green thing) + Reference Lines + Sets
+##1. Open UK Car Consumption and Emission Extract.tde
+
+##2. Rename Sheet 1 to Noise Level Histogram
+
+##3. Drag Engine to Column, and Noise Level to Row
+
+##4. Take Average as the Measure of Noise Level
+
+##5. Drag Noise Level to Filter and click Show Quick Filter
+![](EngHis.png)
+
+##6. Adjust filter to find the Engine gives highest average of noise level
+![](High.png)
+
+##7. Adjust filter to find the Engine that gives lowest average of noise
+![](Low.png)
+Upper 70s (dB (A)) are annoyingly loud to some people. So next I compare the Average of the all the Noise made by these engines to the threshold 70s (dB (A)).
+
+##8. Go to Analytics and click Reference Line, choose Line Only. Click on Value and choose create parameter. Created a parameter called "Annoyingly Loud", and click OK. And then go to Analytics and click Average Line.
+![](Refline.png)
+Clearly the Average noise made by all these years from 2000 to 2013 have surpassed the standards of human comfort.
+
+##9.Select the four highest Sales Categories and hover over one of them. Click on the Set icon and select Create Set. Name the Set “Four Highest Noise Levels”
+![](f.png)
+
+##More Histogram Story
+##CNT of Cost of Fuel 6000 Miles with SUM of Engine Capacity on a Dual-axis
+##1. Drag the Measure Fuel Cost 6000 miles to "Drop to the field" and click Histogram on "Show Me"
+
+##2. Drag Engine Capacity to right axis to create a dual axis plot
+
+##3. Go to Makr, click on CNT(Fuel Cost 6000 Miles) and change Automatic to Bar, and then click on SUM(Engine Capacity) and change Automatic to Line	
+![](dual.png)
+##4. Drag Year to Pages Shelf and step through each year from 2000 to 2004.
+<video controls="controls" width="800" height="600" name="Dual Axis through Years" src="PagesoverYear.mov"></video>
+It tells that over the four years the mean fuel cost to run 6000 miles in Pounds doesn not change, is always 540.5 Pounds; what changes is that over time, more and more people's cars have run 6000 miles and thus the counts for each variable in the bin is increasing. It reflects car has been becoming a popular travel tool. The yellow line also shows that the larger the engine capacity the higher fuel cost.
+
+##The above can also be shown in Packed Bubble
+![](Packed.png)
+Step through each year from 2000 to 2004
+<video controls="controls" width="800" height="600" name="Dual Axis through Years" src="Packedbubble.mov"></video>
+
+##<span style="color:red">Scatter Plots</span> (start with 2 green things) -also demonstrates Maps, Ac9ons, Dashboards, and the Analy9cs Tab - Models and Forecas9ng
+
+##Scatterplot Story
+##1. Drag Urban Imperial to Column and Co2 to Row, and drag
+
+##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
+![](s.png)
+Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
+
+##<span style="color:red">Crosstabs</span> (start with two blue things and a green thing) - also demonstrates Key Performance Indicators (KPIs), Calculated Fields, Sets, Parameters, and Hierarchies
+##Crosstabs + KPI Story + Sets (start with two blue things and a green thing)
+
+##1. Open UK Car Consumption and Emissions Extract.tde
+##2. Rename Sheet 1 to Crosstab + KPI
+##3. Drag Fuel Type to the Columns Shelf
+##4. Drag Manufacturer to the Rows Shelf
+##5. Drag Co2 to Text on the Marks Card
+##6. View the data by clicking on the View Data icon on the Dimensions Tab, notice there is no column named “KPI – Fuel Consump Ratio”
+##7. On the Dimensions Tab, click on the menu icon and select Create Calculated Field
+##8. Name the Calculated Field “KPI - Fuel Consummp Ratio”
+##9. Enter Sum([Urban Imperial])/Sum([Co2]) as the calculation. Notice that Urban Imperial means fuel comsumption in urban conditions in miles per gallon (mpg). So the higher ratio the entry has, the more environmental-friendly and more fuel efficient the combo is
+##10. On the Dimensions Tab, click the View Data icon and see that a new field named “KPI - Fuel Consump Ratio” was added to the data.
+##11. View the data again, now notice there is a column named “KPI – Fuel Consump Ratio”
+##12. Drag KPI - Fuel Consump Ratio onto Color
+##13. Change the Color Palette to Red-White-Green Diverge. The greener the better. Also adjust to Entire View to see the entire crosstab
+![](KPI.png)
+Clearly all cars that use Diesel Electric Engine are green and therefore more environmental-freindly. However, there is no certain manufacturer whose cars are environmental-friendly over all Fuel Types. So my suggestion is that no matter what car you get, try using Diesel Electricity.
+##14. Create a Four Highest Co2 Set, and drag it to Filters. Set this Filter to All.
+![](set.png)
+![](sf.png)
+The numbers show that these four brands are pretty popular in UK so they have the highest sum of Co2 emissions; the color tells us that Mercedes-Benz and Volkswagen are more environmentally friedly (VW really?). 
+
+##<span style="color:red">Barcharts</span> (start with a blue thing and a green thing) - also demonstrate Table Calculations
+
+##Barcharts Story (start with a blue thing and a green thing) + Table Calculations
+
+
+
+
+
+
+
+
+
+
+
+
+
