@@ -1,23 +1,24 @@
-Final Project -- Exploring Automobile Fuel Efficiency & Environmental-Friendliness
 ---
+title: Final Project -- Exploring Automobile's Fuel Efficiency & Environmental-Friendliness
 data: UK Car Fuel Consumption and Emissions 
 author: "Panyu Peng; Bryan Ho" 
 date: "December 4, 2015"  
 output: html_document 
 ---
-Today, we are exploring myriad elements of automobiles including Fuel Type, Transmission Type, Engine, Manufacturer etc. so that we have an idea of the optimal combination of these elements that makes the most fuel efficient and environmental-friendly transportation tool. 
+![](c.png)
 
-*<span style="color:red">Non-Aggregated Measures Analysis</span>
-*<span style="color:red">Aggregated Measures Analysis</span>
-*<span style="color:red">Scatter Plots</span>
-*<span style="color:red">Crosstabs</span>
-*<span style="color:red">Barcharts</span>
+#Today, we are exploring myriad elements of automobiles including Fuel Type, Transmission Type, Engine, Manufacturer etc. so that we have an idea of the optimal combination of these elements that makes the most fuel efficient and environmental-friendly transportation tool. 
+
+1. <span style="color:red">Non-Aggregated Measures Analysis</span> 
+2. <span style="color:red">Aggregated Measures Analysis</span> 
+3. <span style="color:red">Scatter Plots</span> 
+4. <span style="color:red">Crosstabs</span>  
+5. <span style="color:red">Barcharts</span> 
 
 #Create a Table and upload data to Oracle Server. The modified versions are as follows:
- 
-###UK Car Fuel Consumption and Emissions's R_ETL.R file and Table:  
+##UK Car Fuel Consumption and Emissions's R_ETL.R file and Table:  
 ![](CSV.png)  
-<<<<<<< HEAD
+
 CREATE TABLE carconsump (
 -- Change table_name to the table name you want.
 year varchar2(4000),
@@ -53,48 +54,16 @@ fuel_cost_6000_miles number(38,4)
 
  
 #Experiment Tableau Data Extract
-I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.csv of total of 10,000 rows and save it as a .tde called carconsump.reformatted_5000Rows.tde. So I created a TDE from a CSV. Follows are the procedures to create a TDE:
+##I extracted the first 5000 thousand rows of our dataset, carconsump.reformatted.csv of total of 10,000 rows and save it as a .tde called carconsump.reformatted_5000Rows.tde. So I created a TDE from a CSV from Tableau user interface. Follows are the procedures to create a TDE:
 ![](ExperimentExtractData.png)
 ![](ExpExtractData_5000.png)
-=======
-CREATE TABLE carconsump (  
--- Change table_name to the table name you want.  
- year varchar2(4000),  
- manufacturer varchar2(4000),  
- model varchar2(4000),  
- engine varchar2(4000),  
- transmission varchar2(4000),  
- transmission_type varchar2(4000),  
- fuel_type varchar2(4000),  
- X varchar2(4000),  
- X_1 varchar2(4000),  
- X_2 varchar2(4000),  
- X_3 varchar2(4000),  
- X_4 varchar2(4000),  
- X_5 varchar2(4000),  
- X_6 varchar2(4000),  
- X_7 varchar2(4000),  
- X_8 varchar2(4000),  
- X_9 varchar2(4000),  
- euro_standard number(38,4),  
- engine_capacity number(38,4),  
- urban_metric number(38,4),  
- extra_urban_metric number(38,4),  
- combined_metric number(38,4),  
- urban_imperial number(38,4),  
- extra_urban_imperial number(38,4),  
- combined_imperial number(38,4),  
- noise_level number(38,4),  
- co2 number(38,4),  
- co_emissions number(38,4),  
- fuel_cost_6000_miles number(38,4)  
- );  
-   
-#Understanding Tableau Data Extract
->>>>>>> 3674e1df7b16b1d1084882d9d3b11b4ebe91aaea
+
+#Understand Tableau Data Extract
+
 ##A Tableau data extract is a compressed snapshot of data stored on disk and loaded into memory as required to render a Tableau viz.There are two aspects of TDE design that make them ideal for supporting analytics and data discovery. 
 ##The first is that a TDE is a columnar store. Columnar databases store column values together rather than row values, and as a result, they dramatically reduce the input/output required to access and aggregate the values in a column. 
 ![](Col_Row.png)
+
 ##The second key aspect of TDE design is how they are structured which impacts how they are loaded into memory and used by Tableau.TDEs use all parts of your computer’s memory, from RAM to hard disk, and put each part to work as best fits its characteristics. To better understand, I tried to connect to our data UK Car Fuel Consumptions and Emissions with an Extract API script in python, where I explored and walked through how a TDE is created from a CSV and then later used in our project as the data source for one or more visualizations.
 ![](PythonCSV2TDE.png)
 ##When Tableau creates a data extract, it first defines the structure for the TDE and creates separate files for each column in the underlying source.To complete the creation of a TDE, individual column files are combined with metadata to form a memory-mapped file. Because a TDE is a memory-mapped file, when Tableau requests data from a TDE, the data is loaded directly into memory by the operating system. Tableau doesn’t have to open, process or decompress the TDE to start using it. If necessary, the operating system continues to move data in and out of RAM to insure that all of the requested data is made available to Tableau. This is a key point - it means that Tableau can query data that is bigger than the available RAM on a machine!
@@ -102,9 +71,9 @@ CREATE TABLE carconsump (
 ###For further information on TDE, check 
 <a href="http://www.tableau.com/about/blog/2014/7/understanding-tableau-data-extracts-part1/">Tableau Understanding Data Extracts</a>
 
-#Exploring Tableau Data Visualizations!
+#Explore Tableau Data Visualizations!
 
-##<span style="color:red">Non-Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Boxplots, Dates, and Pages
+##<span style="color:red">Non-Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Boxplots, Detail, and Pages
 ##Boxplot Story (start with a green thing)
 ###1. Open UK Car Consumption and Emissions. tde
 
@@ -126,7 +95,8 @@ CREATE TABLE carconsump (
 ###9. Filtered out the top 20 luxury cars
 
 ###10. Click through the luxury car brands on Pages 
-###Ok brands
+###Entry-Level Luxury Cars
+The main fuel type used by this group of cars with price rage $ 30,000 - $ 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and other except Land Rover has mean carbon emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
 ![](Merc.png)
 ![](Audi.png)
 ![](BMW.png)
@@ -135,23 +105,22 @@ CREATE TABLE carconsump (
 ![](Lex.png)
 ![](Por.png)
 ![](Land.png)
-The main fuel type used by this group of cars with price rage 30,000 - 150,000 are Diesel and Petrol. If using Deisel, Mercedez-Benz, Audi, BMW, Jaguar and all except Land Rover has mean emissions between 150 - 200 grammes per kilometre (g/km). If using Petrol, Mercedez-Benz, Audi, BMW have average near 200 grammes per kilometre (g/km). The worst performing manufacturer is Land Rover which has mean Co2 emissions up to 350 grammes per kilometre (g/km).
 
-###Real luxury brads
+###Premium Luxury Brands
+Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls-Royce, Ferrari, and Aston Martin Lagonda can only use one fuel type Petrol. Highest mean Co2 emission -- Lamborghini up to 600 (g/km). 
 ![](Mas.png) 
 ![](Lam.png)
 ![](Lam.png)
 ![](Rolls.png)
 ![](Fer.png)
 ![](Ast.png)
-Interestingly, top luxury car manufacturers such as Maserati, Lamborghini, Rolls-Royce, Ferrari, and Aston Martin Lagonda can only use one fuel type Petrol. Highest mean Co2 emission -- Lamborghini up to 600 (g/km). 
 
-![](Noi.png)
 If we plot out the boxplot of luxury cars' Co2 emissions and Noise level, we see that the avaerage of Co2 emissions is around 211 g/km, and average of Noise level is up to 71 measured on the A scale of a noise meter (dB (A)).
+![](Noi.png)
 
-Why high emissions and high noise level for luxury cars? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
+Why luxury cars have high emissions and high noise level? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
 
-##<span style="color:red">Introducing To Our First Plot on Shiny App </span>  
+##<span style="color:red">Scatterplot on Shiny App </span>  
 ##First thing to do
 ![](uiPACKAGES.png)
 ![](serverPACKAGES.png)
@@ -170,9 +139,19 @@ Why high emissions and high noise level for luxury cars? I can't quite imagine a
   
 ##Below Here is the link to our shiny app  
 https://bryanho.shinyapps.io/04Shiny  
-  
-  
-  
+
+##<span style="color:red">Scatter Plots</span> (start with 2 green things) -also demonstrates the Trend Line - Models and Forecasting
+
+##Scatterplot Story
+##1. Drag Urban Imperial to Column and Co2 to Row, and drag
+
+##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
+![](s.png)
+##3. Describe Trend Model
+![](d.png)
+![](des.png)
+Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
+
 ##<span style="color:red">Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Histograms, Reference Lines, Sets, Dual-axis Plots and Show Me
 ##Histogram Story (start with a green thing) + Reference Lines + Sets
 ##1. Open UK Car Consumption and Emission Extract.tde
@@ -216,17 +195,8 @@ It tells that over the four years the mean fuel cost to run 6000 miles in Pounds
 ![](Packed.png)
 Step through each year from 2000 to 2004
 <video controls="controls" width="800" height="600" name="Dual Axis through Years" src="Packedbubble.mov"></video>
-
-##<span style="color:red">Scatter Plots</span> (start with 2 green things) -also demonstrates Maps, Ac9ons, Dashboards, and the Analy9cs Tab - Models and Forecas9ng
-
-##Scatterplot Story
-##1. Drag Urban Imperial to Column and Co2 to Row, and drag
-
-##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
-![](s.png)
-Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
   
-##<span style="color:red">Continue With Our Second Plot on Shiny App</span> 
+##<span style="color:red">Crosstab on Shiny App</span> 
 ##CrossTab: Fuel Type Vs. Transmission Type  
 ![](ShinyCrossTab.png)
   
@@ -271,7 +241,8 @@ Clearly all cars that use Diesel Electric Engine are green and therefore more en
 ##14. Create a Four Highest Co2 Set, and drag it to Filters. Set this Filter to All.
 ![](set.png)
 ![](sf.png)
-The numbers show that these four brands are pretty popular in UK so they have the highest sum of Co2 emissions; the color tells us that Mercedes-Benz and Volkswagen are more environmentally friedly (VW really?). 
+The numbers show that these four brands are pretty popular in UK so they have the highest sum of Co2 emissions; the color tells us that Mercedes-Benz and Volkswagen are more environmentally friedly (VW really?).
+http://www.dw.com/en/vw-98000-petrol-cars-affected-by-co2-emissions-cheating-scam/a-18825262
 
 ##<span style="color:red">Barcharts</span> (start with a blue thing and a green thing) - also demonstrate Table Calculations
 
