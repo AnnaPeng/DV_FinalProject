@@ -27,8 +27,6 @@ shinyServer(function(input, output) {
       checkBoxes = input$brand
     }
   }, ignoreNULL = FALSE)
-  
-  #scatterplot <- eventReactive(input$clicks1, {df_1 <- df1 %>% select(YEAR, COMBINED_IMPERIAL, ENGINE_CAPACITY, MANUFACTURER, TRANSMISSION_TYPE) %>% group_by(MANUFACTURER) %>% subset(YEAR %in% YEAR()) %>% subset(MANUFACTURER %in% checkBoxes())
 
   # First ggplot------------------------------------------------------
   output$distPlot1 <- renderPlot({   
@@ -65,9 +63,6 @@ shinyServer(function(input, output) {
   UK <- data.frame(fromJSON(getURL(URLencode('skipper.cs.utexas.edu:5001/rest/native/?query="select * from carconsump"'), httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_pp9774', PASS='orcl_pp9774', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE)))
     
   UK1 <- UK %>% group_by(FUEL_TYPE, TRANSMISSION_TYPE) %>% summarize(AVERAGE_COST = round(mean(FUEL_COST_6000_MILES)))
-  
-  #UK2 <- UK1 %>% group_by(FUEL_TYPE, MANUFACTURER, SUM_URBAN_IMPERIAL) %>% summarize(SUM_CO2 = sum(CO2))
-  
   df2 <- eventReactive(input$clicks2, {df <- UK1 %>% mutate(KPI = ifelse((AVERAGE_COST) <= KPI_Low_Max_value(), 'Most Efficiency', ifelse((AVERAGE_COST) <= KPI_Medium_Max_value(),'Normal', 'Least Efficiency')))
   })
   # Second ggplot------------------------------------------------------

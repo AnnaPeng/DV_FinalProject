@@ -24,39 +24,39 @@ require("extrafont")
 ##The tabel we get is as follows:  
 ###UK Car Fuel Consumption and Emissions's R_ETL.R file:  
 ![](CSV.png)  
-CREATE TABLE carconsump (
--- Change table_name to the table name you want.
- year varchar2(4000),
- manufacturer varchar2(4000),
- model varchar2(4000),
- engine varchar2(4000),
- transmission varchar2(4000),
- transmission_type varchar2(4000),
- fuel_type varchar2(4000),
- X varchar2(4000),
- X_1 varchar2(4000),
- X_2 varchar2(4000),
- X_3 varchar2(4000),
- X_4 varchar2(4000),
- X_5 varchar2(4000),
- X_6 varchar2(4000),
- X_7 varchar2(4000),
- X_8 varchar2(4000),
- X_9 varchar2(4000),
- euro_standard number(38,4),
- engine_capacity number(38,4),
- urban_metric number(38,4),
- extra_urban_metric number(38,4),
- combined_metric number(38,4),
- urban_imperial number(38,4),
- extra_urban_imperial number(38,4),
- combined_imperial number(38,4),
- noise_level number(38,4),
- co2 number(38,4),
- co_emissions number(38,4),
- fuel_cost_6000_miles number(38,4)
- );
- 
+CREATE TABLE carconsump (  
+-- Change table_name to the table name you want.  
+ year varchar2(4000),  
+ manufacturer varchar2(4000),  
+ model varchar2(4000),  
+ engine varchar2(4000),  
+ transmission varchar2(4000),  
+ transmission_type varchar2(4000),  
+ fuel_type varchar2(4000),  
+ X varchar2(4000),  
+ X_1 varchar2(4000),  
+ X_2 varchar2(4000),  
+ X_3 varchar2(4000),  
+ X_4 varchar2(4000),  
+ X_5 varchar2(4000),  
+ X_6 varchar2(4000),  
+ X_7 varchar2(4000),  
+ X_8 varchar2(4000),  
+ X_9 varchar2(4000),  
+ euro_standard number(38,4),  
+ engine_capacity number(38,4),  
+ urban_metric number(38,4),  
+ extra_urban_metric number(38,4),  
+ combined_metric number(38,4),  
+ urban_imperial number(38,4),  
+ extra_urban_imperial number(38,4),  
+ combined_imperial number(38,4),  
+ noise_level number(38,4),  
+ co2 number(38,4),  
+ co_emissions number(38,4),  
+ fuel_cost_6000_miles number(38,4)  
+ );  
+   
 #Understanding Tableau Data Extract
 ##A Tableau data extract is a compressed snapshot of data stored on disk and loaded into memory as required to render a Tableau viz.There are two aspects of TDE design that make them ideal for supporting analytics and data discovery. 
 ##The first is that a TDE is a columnar store. Columnar databases store column values together rather than row values, and as a result, they dramatically reduce the input/output required to access and aggregate the values in a column. 
@@ -122,6 +122,28 @@ If we plot out the boxplot of luxury cars' Co2 emissions and Noise level, we see
 
 Why high emissions and high noise level for luxury cars? I can't quite imagine a sports car with a V12 engine and maximum speed of 350kph having an emissions/ noise level bypass. Fortunately not everyone can afford one. Good news to our Earth!
 
+##<span style="color:red">Introducing To Our First Plot on Shiny App </span>  
+##First thing to do
+![](uiPACKAGES.png)
+![](serverPACKAGES.png)
+  
+##Scatterplot: Engine Capacity Vs. Combined Imperial  
+![](ShinyScatterplot.png)  
+  
+##In this scatterplot tab, we added some useful features.  
+##Below here are the codes that we used to generate these features.  
+
+![](partUI.png)
+![](part1SERVER.png)
+![](part2SERVER.png)  
+  
+###Conclusion: The more engine capacity the car has, the less miles averages that car can drive per gallon. Also, if we take a look at the scatterplot in every year, we can see that the gas efficiency has increased from around 30 mpg to 45 mpg.
+  
+##Below Here is the link to our shiny app  
+https://bryanho.shinyapps.io/04Shiny  
+  
+  
+  
 ##<span style="color:red">Aggregated Measures Analysis</span>(start with a green thing) - also demonstrates Histograms, Reference Lines, Sets, Dual-axis Plots and Show Me
 ##Histogram Story (start with a green thing) + Reference Lines + Sets
 ##1. Open UK Car Consumption and Emission Extract.tde
@@ -174,7 +196,31 @@ Step through each year from 2000 to 2004
 ##2. Right click the scatterplot to find Trend Line, click edit trend line and choose logarithmic model type
 ![](s.png)
 Urban-Imperial here defines fuel consumption in miles per gallon (mpg). The scatterplot hints a logarithmic model type with model formula: Fuel Type*( log(Urban Imperial) + intercept ). It shows that the more miles sustained by a gallon, the fewer Co2 emissions by this car. That is the more efficient the engine or the fuel, the less Co2 pruduced. Get #97 for your car!
-
+  
+##<span style="color:red">Continue With Our Second Plot on Shiny App</span> 
+##CrossTab: Fuel Type Vs. Transmission Type  
+![](ShinyCrossTab.png)
+  
+##Similar to the first scatterplot, here, we added some other useful features 
+  
+##Below Here are the codes that we used to generate this tab
+  
+###This is the UI code
+![](uiCrossTab.png)  
+  
+###This is the SERVER code
+![](codeserver.png)  
+  
+![](part2CSERVER.png)  
+  
+##Another interesting feature that we discovered  
+![](CrossTabTable.png)
+  
+###Conclusion: Looking this crosstab, we see that the "Compressed Natural Gas (CNG)" has the most gas efficiency among the others. Also, If we take a look at the 2 Transmission types, Automatic and Manual, and make a comparison, we see that Manual tends to have a better gas efficiency than Automatic.
+    
+##Below Here is the link to our shiny app  
+https://bryanho.shinyapps.io/04Shiny  
+  
 ##<span style="color:red">Crosstabs</span> (start with two blue things and a green thing) - also demonstrates Key Performance Indicators (KPIs), Calculated Fields, Sets, Parameters, and Hierarchies
 ##Crosstabs + KPI Story + Sets (start with two blue things and a green thing)
 
